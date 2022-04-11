@@ -11,11 +11,14 @@ def TypeVar(new_type, *types):
 class Any: pass
 Text = str
 class NoReturn: pass
-class ClassVar: pass
+ClassVar = _SubSingleton
 Union = _SubSingleton
 Optional = _SubSingleton
 Generic = _SubSingleton
 NamedTuple = _SubSingleton
+Literal = _SubSingleton
+TypedDict = _SubSingleton
+Final = _SubSingleton
 class Hashable: pass
 class Awaitable: pass
 class Coroutine: pass
