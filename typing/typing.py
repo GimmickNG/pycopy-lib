@@ -1,13 +1,12 @@
 class _Subscriptable:
 
     def __getitem__(self, sub):
-        return sub
+        return self
 
 _SubSingleton = _Subscriptable()
 
-class TypeVar:
-    def __init__(self, new_type, *types):
-        pass
+def TypeVar(new_type, *types):
+    return None
 
 def NewType(new_type, base_type):
     return None
