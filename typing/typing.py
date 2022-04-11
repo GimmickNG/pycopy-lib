@@ -8,6 +8,9 @@ _SubSingleton = _Subscriptable()
 def TypeVar(new_type, *types):
     return None
 
+def NewType(new_type, base_type):
+    return None
+
 class Any: pass
 Text = str
 class NoReturn: pass
