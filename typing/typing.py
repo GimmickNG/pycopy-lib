@@ -1,7 +1,7 @@
 class _Subscriptable:
 
     def __getitem__(self, sub):
-        return self
+        return self.__class__
 
 _SubSingleton = _Subscriptable()
 
