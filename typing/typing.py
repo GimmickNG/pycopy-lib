@@ -18,7 +18,7 @@ ClassVar = _SubSingleton
 Union = _SubSingleton
 Optional = _SubSingleton
 Generic = _SubSingleton
-NamedTuple = _SubSingleton
+class NamedTuple: pass
 Literal = _SubSingleton
 TypedDict = _SubSingleton
 Final = _SubSingleton
