@@ -18,7 +18,6 @@ ClassVar = _SubSingleton
 Union = _SubSingleton
 Optional = _SubSingleton
 Generic = _SubSingleton
-class NamedTuple: pass
 Literal = _SubSingleton
 TypedDict = _SubSingleton
 Final = _SubSingleton
@@ -65,6 +64,11 @@ BinaryIO = IO[bytes]
 
 AnyStr = TypeVar("AnyStr", str, bytes)
 
+class NamedTuple:
+    def __init__(self, *args):
+        for key, index in self.__dict__.items():
+            if isinstance(index, int):
+                setattr(self, key, args[index])        
 
 def cast(typ, val):
     return val
