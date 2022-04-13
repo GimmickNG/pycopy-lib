@@ -66,9 +66,11 @@ AnyStr = TypeVar("AnyStr", str, bytes)
 
 class NamedTuple:
     def __init__(self, *args):
-        for key, index in self.__dict__.items():
+        for key, index in self.__class__.__dict__.items():
             if isinstance(index, int):
                 setattr(self, key, args[index])        
+    def __repr__(self):
+        return "{0}({1})".format(self.__class__.__name__, ', '.join("{0}={1}".format(key, value) for key, value in self.__dict__.items()))
 
 def cast(typ, val):
     return val
