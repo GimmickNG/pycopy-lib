@@ -21,9 +21,9 @@ Generic = _SubSingleton
 Literal = _SubSingleton
 TypedDict = _SubSingleton
 Final = _SubSingleton
+Coroutine = _SubSingleton
 class Hashable: pass
 class Awaitable: pass
-class Coroutine: pass
 class AsyncIterable: pass
 class AsyncIterator: pass
 class Iterable: pass
@@ -45,6 +45,7 @@ List = _SubSingleton
 class Deque: pass
 Set = _SubSingleton
 FrozenSet = _SubSingleton
+AsyncGenerator = _SubSingleton
 class MappingView: pass
 class KeysView: pass
 class ItemsView: pass
@@ -56,7 +57,6 @@ DefaultDict = _SubSingleton
 class Counter: pass
 class ChainMap: pass
 class Generator: pass
-class AsyncGenerator: pass
 class Type: pass
 IO = _SubSingleton
 TextIO = IO[str]
