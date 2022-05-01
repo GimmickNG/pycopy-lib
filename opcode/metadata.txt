@@ -1,3 +1,0 @@
-srctype = pycopy-lib
-type = package
-version = 1.1

@@ -1,1 +1,0 @@
-../cpython-utarfile/utarfile.py

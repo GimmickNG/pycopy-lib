@@ -1,4 +1,0 @@
-srctype = pycopy-lib
-type = module
-version = 0.2.2
-author = Paul Sokolovsky

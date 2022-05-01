@@ -1,7 +1,0 @@
-dist_name = libc
-srctype = pycopy-lib
-type = module
-version = 0.4
-author = Paul Sokolovsky
-desc = Helper module for libc FFI for Pycopy project (https://github.com/pfalcon/pycopy)
-long_desc = Helper module for libc FFI for Pycopy project (https://github.com/pfalcon/pycopy).

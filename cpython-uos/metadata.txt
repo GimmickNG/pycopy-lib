@@ -1,4 +1,0 @@
-srctype = cpython-backport
-type = module
-version = 0.1
-depends = cpython-micropython

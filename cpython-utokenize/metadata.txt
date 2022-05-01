@@ -1,4 +1,0 @@
-srctype = cpython-backport
-type = module
-version = 1.7.1-1
-depends = cpython-ucollections

@@ -1,6 +1,0 @@
-name = re
-srctype = pycopy-lib
-type = module
-version = 1.0
-author = Paul Sokolovsky
-depends = ffilib

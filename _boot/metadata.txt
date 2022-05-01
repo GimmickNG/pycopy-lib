@@ -1,7 +1,0 @@
-srctype = pycopy-lib
-type = module
-version = 0.4.5
-author = Paul Sokolovsky
-desc = Bootstrapping module for pycopy-dev for CPython compatibility
-dist_name = boot
-depends = byteslib, setlib, string

@@ -1,6 +1,0 @@
-srctype = pycopy-lib
-type = package
-version = 0.1.2
-author = Paul Sokolovsky
-desc = UDP support for Pycopy's uasyncio
-depends = uasyncio

@@ -1,4 +1,0 @@
-srctype = cpython
-type = module
-version = 3.5.6
-depends = os, re-pcre, fnmatch
