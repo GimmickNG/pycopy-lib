@@ -53,5 +53,5 @@ for path in mod.rglob("*.py"):
     dest = dest_dir / path.relative_to(path.parent.parent)
     if dest.parent.name == dest.with_suffix('').name:
         dest = dest.with_name("__init__.py")
-    dest.mkdir(parents=True, exist_ok=True)
+    dest.parent.mkdir(parents=True, exist_ok=True)
     shutil.copyfile(path.as_posix(), dest.as_posix())
