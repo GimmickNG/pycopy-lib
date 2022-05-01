@@ -43,7 +43,7 @@ def should_install_1(f):
 def should_install_2(f):
     return not (f.is_symlink() or "/example" in f.as_posix() or "/test_" in f.as_posix() or "/_tool_" in f.as_posix())
 
-mods = Path(sys.argv[1:-1].rstrip("/"))
+mods = (Path(i.rstrip("/")) for i in sys.argv[1:-1])
 dest_dir = Path(sys.argv[-1]).expanduser()
 all_paths = []
 for mod in mods:
