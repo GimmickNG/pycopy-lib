@@ -53,9 +53,5 @@ for path in mod.rglob("*.py"):
     dest = dest_dir / path.relative_to(path.parent.parent)
     if dest.parent.name == dest.with_suffix('').name:
         dest = dest.with_name("__init__.py")
-    try:
-        pass#print("Make dir:", dest.as_posix())#os.makedirs(os.path.dirname(dest))
-    except OSError:
-        pass
-    print("Copying file from", path.as_posix(), "to", dest.as_posix())
-    #shutil.copyfile(f, dest)
+    dest.mkdir(parents=True, exist_ok=True)
+    shutil.copyfile(path.as_posix(), dest.as_posix())
