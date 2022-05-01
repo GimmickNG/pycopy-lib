@@ -28,61 +28,34 @@
 # THE SOFTWARE.
 
 import sys
-sys.path.pop(0)
-import glob
-import os
 import shutil
-
+from pathlib import Path
 
 # First check for installability - paths which don't here, aren't even reported.
-def should_install_1(f):
-    if not f.endswith(".py"):
-        return False
-    if f.endswith("/setup.py"):
-        return False
-    if "/testdata" in f:
-        return False
-    if "/_/" in f:
-        return False
-    return True
+skip_names = [i.name for i in Path(".").resolve().glob("*.py")]
+def should_skip(f):
+    return f.name in skip_names
 
+def should_install_1(f):
+    return ("test" not in f.name and f.name != "setup.py" and "testdata" not in f.as_posix() and "/_/" not in f.as_posix())
 
 # Second check for installability
 def should_install_2(f):
-    if os.path.islink(f):
-        return False
-    if "/example" in f:
-        return False
-    if "/test_" in f:
-        return False
-    if "/_tool_" in f:
-        return False
-    return True
+    return not (f.is_symlink() or "/example" in f.as_posix() or "/test_" in f.as_posix() or "/_tool_" in f.as_posix())
 
+mod = Path(sys.argv[1].rstrip("/"))
+dest_dir = Path(sys.argv[2]).expanduser()
 
-mod = sys.argv[1]
-mod = mod.rstrip("/")
-
-if mod.startswith("cpython-"):
-    dest_dir = "~/.local/lib/python3.6/site-packages"
-else:
-    dest_dir = "~/.pycopy/lib"
-
-dest_dir = os.path.expanduser(dest_dir)
-
-for f in glob.iglob(mod + "/**", recursive=True):
-    if not should_install_1(f):
+for path in mod.rglob("*.py"):
+    if should_skip(path) or not (should_install_1(path) and should_install_2(path)):
         continue
 
-    if not should_install_2(f):
-        print("#", f)
-        continue
-
-    relpath = f[len(mod):]
-    dest = dest_dir + relpath
-    print(dest)
+    dest = dest_dir / path.relative_to(path.parent.parent)
+    if dest.parent.name == dest.with_suffix('').name:
+        dest = dest.with_name("__init__.py")
     try:
-        os.makedirs(os.path.dirname(dest))
+        pass#print("Make dir:", dest.as_posix())#os.makedirs(os.path.dirname(dest))
     except OSError:
         pass
-    shutil.copyfile(f, dest)
+    print("Copying file from", path.as_posix(), "to", dest.as_posix())
+    #shutil.copyfile(f, dest)

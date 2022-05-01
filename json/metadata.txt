@@ -1,4 +1,0 @@
-srctype = cpython
-type = package
-version = 3.4.10
-depends = re-pcre
