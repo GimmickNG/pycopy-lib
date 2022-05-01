@@ -43,10 +43,13 @@ def should_install_1(f):
 def should_install_2(f):
     return not (f.is_symlink() or "/example" in f.as_posix() or "/test_" in f.as_posix() or "/_tool_" in f.as_posix())
 
-mod = Path(sys.argv[1].rstrip("/"))
-dest_dir = Path(sys.argv[2]).expanduser()
+mods = Path(sys.argv[1:-1].rstrip("/"))
+dest_dir = Path(sys.argv[-1]).expanduser()
+all_paths = []
+for mod in mods:
+    all_paths += mod.rglob("*.py")
 
-for path in mod.rglob("*.py"):
+for path in all_paths:
     if should_skip(path) or not (should_install_1(path) and should_install_2(path)):
         continue
 
